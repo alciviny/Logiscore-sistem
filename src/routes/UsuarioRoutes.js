@@ -1,0 +1,5 @@
+const express = require ('express')
+const routes = express.Router()
+routes.get('/produtos',produtoscontroller.exibirProdutos)
+routes.put('/produtos:id',produtoscontroller.atualizarProdutos)
+routes.delete('/produtos:id',produtoscontroller.deletarProdutos)
