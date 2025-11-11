@@ -22,4 +22,4 @@ class ProdutosServices{
         
     }
 }
-export default ProdutosServices;
+export default ProdutosServices; 
