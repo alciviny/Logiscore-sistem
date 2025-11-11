@@ -1,11 +1,13 @@
-import produtosRoutes from "./produtosRoutes";
- const routes = (app) => {
-    app.route("/").get((req, res)=>{
-        const mensage = "Bem-Vindo ao servidor da  LogicScore";
-        res.status(200).send(mensage);
-    })
+import express from 'express';
+import produtos from "./produtosRoutes.js";
 
-    app.use(produtosRoutes);
-}
+const router = express.Router();
 
-export default routes;
+router.get("/", (req, res) => {
+    const message = "Bem-Vindo ao servidor da LogicScore";
+    res.status(200).send(message);
+});
+
+router.use('/produtos', produtos);
+
+export default router;
