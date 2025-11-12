@@ -1,27 +1,35 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 
 const produtoSchema = new mongoose.Schema(
+  
     {
-        nome: String,
-        required:[true, " o campo 'nome' é obrigatorio"]
+        nome: {
+            type: String,
+            required: [true, "O campo 'nome' é obrigatório"]
+        },
+        SKU: {
+            type: String,
+            required: [true, "O campo 'SKU' é obrigatório"],
+            unique: true
+        },
+        quantidade: {
+            type: Number,
+            required: [true, "O campo 'quantidade' é obrigatório"],
+            min: [0, "A quantidade não pode ser negativa"],
+            default: 0
+        },
+        localizacao: {
+            type: String,
+            required: [true, "O campo 'localizacao' é obrigatório"]
+        }
     },
+  
     {
-        SKU:String,
-        required:[true,"o campo 'sku' é obrigatorio"],
-        unique: true,
-    },
-    {
-        quantidade:Number,
-        required:[true,"campo com quantidade é obrigatoria"],
-        min:[0,"a quantidade nao pode ser negativa"],
-        default:0
-    },
-    {
-        localizacao:String,
-        required:[true,"o campo com o local do item é obrigatorio"]
-    },
-    {
-       timestamps: true 
+        timestamps: true
     }
+);
 
-)
+
+const ProdutoModel = mongoose.model('Produto', produtoSchema);
+
+export default ProdutoModel;
