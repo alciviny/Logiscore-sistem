@@ -1,25 +1,44 @@
+import { Error } from "mongoose";
+import ProdutoModel from "../models/ProdutoModel.js";
+
 class ProdutosServices{
     static async Produtos(){
-        const urlProduto = process.env.URLPRODUTO
-        if(urlProduto){
-            try{
-                const response = await axios.get(urlProduto)
-            //////////////////////////////////////////////
-                if(response.status !==200 || !response.data){
-                    console.error('nao foi encontrado nenhum produto na requisicao')
-                    return []
-            }
-            //////////////////////////////////////////////
-                return response.data
-            
+        try{
+        const produtos = await ProdutoModel.find()
+        return produtos}catch(error){
+            throw new Error('nao foi possivel encontrar os produtos: ' )
         }
-            catch(error){
-                console.log('nao foi possivel encontrar o url da api, verifique o Env',+ error)
-                return []
-    };
-    
+        
+}
+    static async cadastrarProdutos(dadosProduto){
+    try{
+        const produto = await ProdutoModel.create(dadosProduto);
+        return produto;
     }
+
+    catch(error){
+       throw new Error('nao foi possivel adicionar produto')
+    }
+   
+
+}
+    static async deletarProduto(id){
+    try{
+        const response = await ProdutoModel.findByIdAndDelete(id);
+        return response;
+
+    }catch(error){
+        throw new Error('nao foi possivel deletar o produto')
+    }
+}
+    static async atualizarProduto(id,dadosAtualizados){
+    try{
+        const response = await ProdutoModel.findByIdAndUpdate(id,dadosAtualizados,{new:true})
+        return response
+    }catch(error){
+        throw new Error("nao foi possivel atualizar os dados do produto");
         
     }
+}
 }
 export default ProdutosServices; 
