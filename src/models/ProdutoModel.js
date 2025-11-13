@@ -21,6 +21,11 @@ const produtoSchema = new mongoose.Schema(
         localizacao: {
             type: String,
             required: [true, "O campo 'localizacao' é obrigatório"]
+        },
+        categoria:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'categoria',
+            required:true
         }
     },
   
