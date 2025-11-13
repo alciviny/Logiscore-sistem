@@ -1,6 +1,6 @@
 import { Error } from "mongoose";
 import ProdutoModel from "../models/ProdutoModel.js";
-import Categoria from '../models/categoriaModel.js';
+
 
 class ProdutosServices{
     static async Produtos(){
