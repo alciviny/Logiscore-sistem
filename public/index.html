@@ -1,69 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../public/style.css">
+    <link rel="stylesheet" href="../public/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <aside class="sidebar">
         <div class="Info">
             <div class="logo">
-                <h1>LC</h1>
+                <img src="images/Group 1.png" alt="">
                 <div class="logo-nomes">
                     <h2 id="Nome-logo">LogisCore</h2>
                     <p id="Subnome">Inventory System</p>
                 </div>
             </div>
-            <div>
-                <ul>
-                    <li class="nav-item">Inventário</li>
-                    <li class="nav-item">Relatórios</li>
-                    <li class="nav-item">Alertas</li>
-                    <li class="nav-item">Configurações</li>
-                </ul>
-            </div>
+            <ul>
+                <li class="nav-item" id="Inventory">Inventário</li>
+                <li class="nav-item">Relatórios</li>
+                <li class="nav-item">Alertas</li>
+                <li class="nav-item">Configurações</li>
+            </ul>
         </div>
     </aside>
     <main class="main">
-        <div class="top-bar">
-            <h2>Inventário</h2>
+        <div class="principal">
+            <h2 id="Titulo-Princ">Painel de Inventário</h2>
             <button class="btn-add" onclick="openModal()">+ Novo Produto</button>
         </div>
         
-    <table id="table-products">
-        <thead>
-            <tr>
-            <th>Nome</th>
-            <th>SKU</th>
-            <th>Local</th>
-            <th>Qtd</th>
-            <th>Ações</th>
-            </tr>
-        </thead>
-            <tbody></tbody>
-    </table>
+        <table class="table-container">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>SKU</th>
+                    <th>Qtd</th>
+                    <th>Status</th>
+                    <th>Localização</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sensor de Pressão ABS</td>
+                    <td class="sku">ABS-001-2024</td>
+                    <td>45</td>
+                    <td><span class="status normal">Normal</span></td>
+                    <td>Setor A - Corredor 3 - Prateleira 12</td>
+                    <td class="btns">
+                        <button class="btn add"><i class="fas fa-plus"></i></button>
+                        <button class="btn remove"><i class="fas fa-minus"></i></button>
+                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Módulo Eletrônico de Controle</td>
+                    <td class="sku">ECU-205-2024</td>
+                    <td>230</td>
+                    <td><span class="status normal">Normal</span></td>
+                    <td>Setor B - Corredor 1 - Prateleira 5</td>
+                    <td class="btns">
+                        <button class="btn add"><i class="fas fa-plus"></i></button>
+                        <button class="btn remove"><i class="fas fa-minus"></i></button>
+                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Sensor de Temperatura do Motor</td>
+                    <td class="sku">TMP-089-2024</td>
+                    <td>620</td>
+                    <td><span class="status high">Alto</span></td>
+                    <td>Setor A - Corredor 5 - Prateleira 8</td>
+                    <td class="btns">
+                        <button class="btn add"><i class="fas fa-plus"></i></button>
+                        <button class="btn remove"><i class="fas fa-minus"></i></button>
+                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Conector de Airbag</td>
+                    <td class="sku">AIR-312-2024</td>
+                    <td>180</td>
+                    <td><span class="status normal">Normal</span></td>
+                    <td>Setor C - Corredor 2 - Prateleira 15</td>
+                    <td class="btns">
+                        <button class="btn add"><i class="fas fa-plus"></i></button>
+                        <button class="btn remove"><i class="fas fa-minus"></i></button>
+                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Relê de Ignição</td>
+                    <td class="sku">IGN-456-2024</td>
+                    <td>25</td>
+                    <td><span class="status normal">Normal</span></td>
+                    <td>Setor B - Corredor 4 - Prateleira 3</td>
+                    <td class="btns">
+                        <button class="btn add"><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn remove"><i class="fas fa-minus"></i></button>
+                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </main>    
         <!-- MODAL -->
-    <div class="modal-bg" id="modal-bg">
+    <div class="modal-form" id="modal-form">
         <div class="modal">
             <h2>Novo Produto</h2>
-            <div class="input-group">
+            <div class="inpt-grupo">
                 <input type="text" id="name" placeholder="Nome" />
             </div>
-        <div class="input-group">
-            <input type="text" id="sku" placeholder="SKU" />
-        </div>
-        <div class="input-group">
-            <input type="number" id="qty" placeholder="Quantidade" />
-        </div>
-        <div class="input-group">
-            <input type="text" id="loc" placeholder="Local" />
-        </div>
-        <button onclick="addProduct()">Adicionar</button>
+            <div class="inpt-grupo">
+                <input type="text" id="sku" placeholder="SKU" />
+            </div>
+            <div class="inpt-grupo">
+                <input type="number" id="qty" placeholder="Quantidade" />
+            </div>
+            <div class="inpt-grupo">
+                <input type="text" id="loc" placeholder="Local" />
+            </div>
+            <button onclick="addProduct()">Adicionar</button>
         </div>
     </div>
-
+<script src="scripts/modal.js" defer></script>
+<script src="scripts/addformulario.js"></script>
 </body>
 </html>
