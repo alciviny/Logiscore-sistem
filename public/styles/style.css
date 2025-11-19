@@ -254,3 +254,38 @@ tbody td {
 .modal-form.active .modal {
     transform: scale(1);
 }
+
+.modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.inpt-grupo {
+    margin-bottom: 15px;
+}
+
+.inpt-grupo input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.buttonSubmit {
+    width: 100%;
+    padding: 12px;
+    background-color: #469ef6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.buttonSubmit:hover {
+    background-color: #3b85d4;
+}

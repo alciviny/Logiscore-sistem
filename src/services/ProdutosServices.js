@@ -1,5 +1,6 @@
 import { Error } from "mongoose";
 import ProdutoModel from "../models/ProdutoModel.js";
+import CategoriaModel from "../models/categoriaModel.js";
 
 
 class ProdutosServices{
@@ -13,9 +14,12 @@ class ProdutosServices{
 }
     static async cadastrarProdutos(dadosProduto){
     try{
-        const categoria = await Categoria.findById(dadosProduto.categoria);
-        if (!categoria) {
-            throw new Error('Categoria não encontrada');
+        // Valida categoria apenas se for informada
+        if (dadosProduto.categoria) {
+            const categoria = await CategoriaModel.findById(dadosProduto.categoria);
+            if (!categoria) {
+                throw new Error('Categoria não encontrada');
+            }
         }
         const produto = await ProdutoModel.create(dadosProduto);
         return produto;
@@ -24,7 +28,6 @@ class ProdutosServices{
     catch(error){
        throw new Error(`nao foi possivel adicionar produto: ${error.message}`)
     }
-   
 
 }
     static async deletarProduto(id){

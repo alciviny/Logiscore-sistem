@@ -112,24 +112,25 @@
     </main>    
         <!-- MODAL -->
     <div class="modal-form" id="modal-form">
-        <div class="modal">
+        <form action="" class="modal">
             <h2>Novo Produto</h2>
             <div class="inpt-grupo">
-                <input type="text" id="name" placeholder="Nome" />
+                <input type="text" id="nome" name="nome" placeholder="Nome" />
             </div>
             <div class="inpt-grupo">
-                <input type="text" id="sku" placeholder="SKU" />
+                <input type="text" id="sku" name="SKU" placeholder="SKU" />
             </div>
             <div class="inpt-grupo">
-                <input type="number" id="qty" placeholder="Quantidade" />
+                <input type="number" id="quantidade" name="quantidade" placeholder="Quantidade" />
             </div>
             <div class="inpt-grupo">
-                <input type="text" id="loc" placeholder="Local" />
+                <input type="text" id="localizacao" name="localizacao" placeholder="Local" />
             </div>
-            <button onclick="addProduct()">Adicionar</button>
-        </div>
+           
+            <button type="submit" class="buttonSubmit">Adicionar Produto</button>
+        </form>
     </div>
 <script src="scripts/modal.js" defer></script>
-<script src="scripts/addformulario.js"></script>
+<script src="scripts/addformulario.js" defer></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 const modalBackground = document.getElementById('modal-form');
-const openModalButton = document.getElementById('add-produto-btn');
+const openModalButton = document.querySelector('.buttonSubmit');
 
 function openModal() {
     modalBackground.classList.add('active'); 

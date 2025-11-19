@@ -7,37 +7,53 @@
 //     data = new Object.entries()
 // })
 
-const formulario = document.getElementById('formulario');
+const formulario = document.querySelector('.modal');
 
-formulario.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const data = {};
-
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
-
-    try {
-        const response = await fetch('/api/seu-recurso', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-            alert('Dados cadastrados com sucesso!');
-            formulario.reset();
-        } else {
-            const errorData = await response.json();
-            alert(`Erro no cadastro: ${errorData.message || response.statusText}`);
+if (!formulario) {
+    console.error('Formulário não encontrado: seletor ".modal" retornou nulo.');
+} else {
+    formulario.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        console.log('formulario reconhecido');
+        const formData = new FormData(e.target);
+        for (const [k, v] of formData.entries()) {
+            console.log('FormData entry:', k, v);
         }
+        const data = Object.fromEntries(formData);
+        if (data.quantidade) {
+            const n = Number(data.quantidade);
+            data.quantidade = Number.isNaN(n) ? data.quantidade : n;
+        }
+        if (data.sku) data.sku = String(data.sku).trim();
+        console.log('Objeto final a ser enviado:', data);
+        try {
+            const response = await fetch('http://localhost:3000/produtos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
 
-    } catch (error) {
-        console.error('Erro de conexão:', error);
-        alert('Ocorreu um erro de rede ao tentar cadastrar.');
-    }
-});
+            if (response.ok) {
+                alert('Dados cadastrados com sucesso!');
+                formulario.reset();
+
+            } else {
+                
+                let errBody;
+                try {
+                    errBody = await response.json();
+                } catch (e) {
+                    errBody = await response.text();
+                }
+                console.error('Resposta de erro do servidor:', response.status, errBody);
+                alert(`Erro no cadastro: ${JSON.stringify(errBody) || response.statusText}`);
+            }
+
+        } catch (error) {
+            console.error('Erro de conexão:', error);
+            alert('Ocorreu um erro de rede ao tentar cadastrar.');
+        }
+    });
+}
