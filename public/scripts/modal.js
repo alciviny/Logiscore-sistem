@@ -19,7 +19,6 @@ function addProduct() {
     const qty = document.getElementById('qty').value;
     const loc = document.getElementById('loc').value;
 
-    // 2. Validação simples
     if (!name || !sku || !qty || !loc) {
         alert("Por favor, preencha todos os campos!");
         return;

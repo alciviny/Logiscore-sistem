@@ -114,20 +114,18 @@ li {
     width: 90%;
     max-width: 1200px;
     background-color: #fff;
-    border-radius: 12px; /* Cantos arredondados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    overflow: hidden; /* Garante que a borda arredondada seja aplicada */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-/* Estilo da Tabela */
 table {
     width: 100%;
-    border-collapse: collapse; /* Remove o espaço entre as bordas das células */
+    border-collapse: collapse;
 }
 
-/* Estilo do Cabeçalho */
 thead {
-    background-color: #e0f0ff; /* Cor de fundo do cabeçalho (azul claro) */
+    background-color: #e0f0ff;
     color: #333;
     font-weight: bold;
 }
@@ -139,13 +137,12 @@ thead th {
     font-size: 0.9em;
 }
 
-/* Estilo das Linhas de Dados */
 tbody tr {
-    border-bottom: 1px solid #eee; /* Linha de separação suave */
+    border-bottom: 1px solid #eee;
 }
 
 tbody tr:last-child {
-    border-bottom: none; /* Remove a borda da última linha */
+    border-bottom: none;
 }
 
 tbody td {
@@ -154,13 +151,11 @@ tbody td {
     vertical-align: middle;
 }
 
-/* Estilo para a coluna SKU (texto azul mais escuro) */
 .sku {
     color: #007bff;
     font-weight: 500;
 }
 
-/* Estilo das Células de Status */
 .status {
     display: inline-block;
     padding: 4px 8px;
@@ -170,22 +165,19 @@ tbody td {
     text-align: center;
 }
 
-/* Cores específicas para o status 'Normal' */
 .status.normal {
-    background-color: #e6ffe6; /* Verde claro */
-    color: #28a745; /* Verde escuro */
+    background-color: #e6ffe6;
+    color: #28a745;
 }
 
-/* Cores específicas para o status 'Alto' */
 .status.high {
-    background-color: #fff8e1; /* Amarelo claro */
-    color: #ffc107; /* Amarelo escuro */
+    background-color: #fff8e1;
+    color: #ffc107;
 }
 
-/* Estilo para a Coluna de Ações */
 .btns {
-    text-align: right; /* Alinha os botões à direita */
-    width: 150px; /* Largura fixa para os botões */
+    text-align: right;
+    width: 150px;
 }
 
 .btn {
@@ -196,24 +188,23 @@ tbody td {
     border-radius: 6px;
     font-size: 0.8em;
     transition: background-color 0.2s;
-    background-color: #fff; /* Fundo branco padrão */
+    background-color: #fff;
 }
 
-/* Estilos específicos para os botões de ação */
 .btn.add {
-    color: #007bff; /* Ícone azul */
+    color: #007bff;
     border-color: #cce5ff;
     background-color: #f0f7ff;
 }
 
 .btn.remove {
-    color: #dc3545; /* Ícone vermelho */
+    color: #dc3545;
     border-color: #f8d7da;
     background-color: #fcebeb;
 }
 
 .btn.delete {
-    color: #6c757d; /* Ícone cinza */
+    color: #6c757d;
     border-color: #e9ecef;
     background-color: #f8f9fa;
 }
