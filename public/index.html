@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="Info">
+            <div class="logo">
+                <h1>LC</h1>
+                <div class="logo-nomes">
+                    <h2 id="Nome-logo">LogisCore</h2>
+                    <p id="Subnome">Inventory System</p>
+                </div>
+            </div>
+            <div>
+                <ul>
+                    <li class="nav-item">Inventário</li>
+                    <li class="nav-item">Relatórios</li>
+                    <li class="nav-item">Alertas</li>
+                    <li class="nav-item">Configurações</li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <main class="main">
+        <div class="top-bar">
+            <h2>Inventário</h2>
+            <button class="btn-add" onclick="openModal()">+ Novo Produto</button>
+        </div>
+        
+    <table id="table-products">
+        <thead>
+            <tr>
+            <th>Nome</th>
+            <th>SKU</th>
+            <th>Local</th>
+            <th>Qtd</th>
+            <th>Ações</th>
+            </tr>
+        </thead>
+            <tbody></tbody>
+    </table>
+    </main>    
+        <!-- MODAL -->
+    <div class="modal-bg" id="modal-bg">
+        <div class="modal">
+            <h2>Novo Produto</h2>
+            <div class="input-group">
+                <input type="text" id="name" placeholder="Nome" />
+            </div>
+        <div class="input-group">
+            <input type="text" id="sku" placeholder="SKU" />
+        </div>
+        <div class="input-group">
+            <input type="number" id="qty" placeholder="Quantidade" />
+        </div>
+        <div class="input-group">
+            <input type="text" id="loc" placeholder="Local" />
+        </div>
+        <button onclick="addProduct()">Adicionar</button>
+        </div>
+    </div>
+
+</body>
+</html>
