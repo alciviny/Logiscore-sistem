@@ -1,11 +1,26 @@
 
 function cardProdutos(produto){
+    let status;
+    let statusClass;
+
+    if (produto.quantidade > 5) {
+        status = 'Normal';
+        statusClass = 'normal';
+    } else if (produto.quantidade >= 0 && produto.quantidade <= 5) {
+        status = 'Baixo Estoque';
+        statusClass = 'baixo';
+    } else {
+        status = 'Indefinido';
+        statusClass = 'indefinido';
+    }
+
+
     const card= `
     <tr>
                     <td>${produto.nome}</td>
                     <td class="sku">${produto.SKU}</td>
                     <td>${produto.quantidade}</td>
-                    <td><span class="status normal">${produto.status}</span></td>
+                    <td><span class="status ${statusClass}">${status}</span></td>
                     <td>${produto.localizacao}</td>
                     <td class="btns">
                         <button class="btn add"><i class="fas fa-plus"></i></button>
