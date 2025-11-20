@@ -1,0 +1,44 @@
+
+function cardProdutos(produto){
+    const card= `
+    <tr>
+                    <td>${produto.nome}</td>
+                    <td class="sku">${produto.SKU}</td>
+                    <td>${produto.quantidade}</td>
+                    <td><span class="status normal">${produto.status}</span></td>
+                    <td>${produto.localizacao}</td>
+                    <td class="btns">
+                        <button class="btn add"><i class="fas fa-plus"></i></button>
+                        <button class="btn remove"><i class="fas fa-minus"></i></button>
+                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>`
+
+                return card;
+}
+
+   async function renderizarProdutos() {
+    const table = document.querySelector('.table-container')
+
+    try {
+        const response = await fetch('http://localhost:3000/produtos')
+        const data = await response.json()
+
+        console.log(data)
+
+        if (!data || data.length === 0) {
+            console.log("Nenhum produto encontrado.")
+            return
+        }
+
+        data.forEach(produto => {
+            const cardHTML = cardProdutos(produto)
+            table.insertAdjacentHTML("beforeend", cardHTML)
+        })
+
+    } catch (error) {
+        console.log('Não foi possível puxar do banco de dados:', error)
+    }
+    
+} 
+renderizarProdutos()
