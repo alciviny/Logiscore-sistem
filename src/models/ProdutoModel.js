@@ -26,6 +26,12 @@ const produtoSchema = new mongoose.Schema(
             // type:mongoose.Schema.Types.ObjectId,
             // ref:'categoria',
             // required:true
+        },
+        status: {
+            type: String,
+            required: [true,"campo obrigatorio"],
+            default: "Em estoque",
+            enum: ["Em estoque", "Baixo estoque", "Fora de estoque"]
         }
     },
   
