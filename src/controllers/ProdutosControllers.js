@@ -29,11 +29,10 @@ import ProdutosServices from '../services/ProdutosServices.js'
    static async ProdutosPut(req,res){
     const {id}= req.params;
     const produtos = req.body;
-    if(!id || !produtos){
-      const mensagem= `nao foi possivel deletar produto :${error}`
-      res.status(500).json(mensagem)
-       
-          
+    if(!id || !Object.keys(produtos).length){
+      const mensagem= `Dados insuficientes para a atualização.`;
+      res.status(400).json({ message: mensagem });
+      return;
      }
     try{
       const response = await ProdutosServices.atualizarProduto(id,produtos)
