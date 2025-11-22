@@ -25,7 +25,7 @@ function cardProdutos(produto){
                     <td class="btns">
                         <button class="btn add"><i class="fas fa-plus"></i></button>
                         <button class="btn remove"><i class="fas fa-minus"></i></button>
-                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
+                        <button class="btndelete" data-id="${produto._id}"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>`
 

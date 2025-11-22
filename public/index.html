@@ -43,70 +43,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Sensor de Pressão ABS</td>
-                    <td class="sku">ABS-001-2024</td>
-                    <td>45</td>
-                    <td><span class="status normal">Normal</span></td>
-                    <td>Setor A - Corredor 3 - Prateleira 12</td>
-                    <td class="btns">
-                        <button class="btn add"><i class="fas fa-plus"></i></button>
-                        <button class="btn remove"><i class="fas fa-minus"></i></button>
-                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
                 
-                <tr>
-                    <td>Módulo Eletrônico de Controle</td>
-                    <td class="sku">ECU-205-2024</td>
-                    <td>230</td>
-                    <td><span class="status normal">Normal</span></td>
-                    <td>Setor B - Corredor 1 - Prateleira 5</td>
-                    <td class="btns">
-                        <button class="btn add"><i class="fas fa-plus"></i></button>
-                        <button class="btn remove"><i class="fas fa-minus"></i></button>
-                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>Sensor de Temperatura do Motor</td>
-                    <td class="sku">TMP-089-2024</td>
-                    <td>620</td>
-                    <td><span class="status high">Alto</span></td>
-                    <td>Setor A - Corredor 5 - Prateleira 8</td>
-                    <td class="btns">
-                        <button class="btn add"><i class="fas fa-plus"></i></button>
-                        <button class="btn remove"><i class="fas fa-minus"></i></button>
-                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Conector de Airbag</td>
-                    <td class="sku">AIR-312-2024</td>
-                    <td>180</td>
-                    <td><span class="status normal">Normal</span></td>
-                    <td>Setor C - Corredor 2 - Prateleira 15</td>
-                    <td class="btns">
-                        <button class="btn add"><i class="fas fa-plus"></i></button>
-                        <button class="btn remove"><i class="fas fa-minus"></i></button>
-                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Relê de Ignição</td>
-                    <td class="sku">IGN-456-2024</td>
-                    <td>25</td>
-                    <td><span class="status normal">Normal</span></td>
-                    <td>Setor B - Corredor 4 - Prateleira 3</td>
-                    <td class="btns">
-                        <button class="btn add"><i class="fa-solid fa-plus"></i></button>
-                        <button class="btn remove"><i class="fas fa-minus"></i></button>
-                        <button class="btn delete"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </main>    
@@ -126,9 +63,6 @@
             <div class="inpt-grupo">
                 <input type="text" id="localizacao" name="localizacao" placeholder="Local" />
             </div>
-            <div class="inpt-grupo">
-                <input type="text" name="status" id="status" placeholder="status do produto"/>
-            </div>
            
             <button type="submit" class="buttonSubmit">Adicionar Produto</button>
         </form>
@@ -136,5 +70,6 @@
 <script src="scripts/modal.js" defer></script>
 <script src="scripts/addformulario.js" defer></script>
 <script src="scripts/Cardprodutos.js"></script>
+<script src="scripts/deleteButton.js" defer></script>
 </body>
 </html>
