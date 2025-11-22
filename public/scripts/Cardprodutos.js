@@ -23,8 +23,8 @@ function cardProdutos(produto){
                     <td><span class="status ${statusClass}">${status}</span></td>
                     <td>${produto.localizacao}</td>
                     <td class="btns">
-                        <button class="btn add"><i class="fas fa-plus"></i></button>
-                        <button class="btn remove"><i class="fas fa-minus"></i></button>
+                        <button class="btnadd"><i class="fas fa-plus"></i></button>
+                        <button class="btnremove"><i class="fas fa-minus"></i></button>
                         <button class="btndelete" data-id="${produto._id}"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>`
