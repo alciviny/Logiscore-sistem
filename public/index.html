@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../public/styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -40,6 +40,22 @@
 
             <div id="erro-busca" class="erro-busca">
                 Nenhum produto encontrado com o nome ou SKU fornecido
+            </div>
+        </div>
+
+        <div id="relatorios-container" style="display: none;">
+            <div class="cards-container">
+                <div class="card kpi-card">
+                    <h3 class="card-title">Total de Produtos</h3>
+                    <p id="total-produtos-valor" class="card-value">0</p>
+                </div>
+                <div class="card kpi-card">
+                    <h3 class="card-title">Estoque Baixo</h3>
+                    <p id="baixo-estoque-valor" class="card-value">0</p>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="graficoLocalizacao"></canvas>
             </div>
         </div>
         
@@ -79,11 +95,14 @@
             <button type="submit" class="buttonSubmit">Adicionar Produto</button>
         </form>
     </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="scripts/modal.js" defer></script>
 <script src="scripts/addformulario.js" defer></script>
 <script src="scripts/pesquisar.js" defer></script>
 <script src="scripts/Cardprodutos.js" defer></script>
 <script src="scripts/deleteButton.js" defer></script>
 <script src="scripts/editProdutos.js" defer></script>
+<script src="scripts/relatorios.js" defer></script>
+<script src="scripts/navegacao.js" defer></script>
 </body>
 </html>
