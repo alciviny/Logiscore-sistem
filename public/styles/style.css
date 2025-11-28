@@ -89,6 +89,19 @@ li {
     background: #79797939;
 }
 
+/* Badge para o contador de alertas */
+.badge {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+
 /* MAIN */
 .main {
     flex: 1;

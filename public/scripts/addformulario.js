@@ -19,6 +19,9 @@ if (!formulario) {
         if (data.preco) {
             data.preco = Number(data.preco);
         }
+        if (data.estoqueMinimo) {
+            data.estoqueMinimo = Number(data.estoqueMinimo);
+        }
         
         let method;
         let url;
