@@ -8,7 +8,7 @@ let graficoTop5Instance = null;
  */
 async function carregarRelatorios() {
     try {
-        const response = await fetch('/relatorios/dashboard');
+        const response = await fetch('/api/relatorios/dashboard');
         if (!response.ok) {
             throw new Error(`Erro na requisição: ${response.statusText}`);
         }
@@ -45,7 +45,7 @@ async function carregarRelatorios() {
  */
 async function carregarAlertas() {
     try {
-        const response = await fetch('/relatorios/produtos-criticos');
+        const response = await fetch('/api/relatorios/produtos-criticos');
         if (!response.ok) {
             throw new Error(`Erro ao buscar produtos críticos: ${response.statusText}`);
         }
