@@ -11,6 +11,14 @@ if (!formulario) {
         
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData);
+
+        // Garante que os campos numéricos sejam enviados como números para a API
+        if (data.quantidade) {
+            data.quantidade = Number(data.quantidade);
+        }
+        if (data.preco) {
+            data.preco = Number(data.preco);
+        }
         
         let method;
         let url;
