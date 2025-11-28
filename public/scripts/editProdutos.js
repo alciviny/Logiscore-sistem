@@ -11,7 +11,7 @@ async function enviarAtualizacaoAPI(id, novaQuantidade) {
 }
 
 function atualizarStatusVisual(linha, novaQuantidade) {
-    const spanStatus = linha.children[3].querySelector('.status');
+    const spanStatus = linha.children[4].querySelector('.status');
     let statusTexto;
     let statusClasse;
     
@@ -61,20 +61,25 @@ async function alterarQuantidade(botao, mudanca) {
     }
 }
 
-function carregarProdutoParaEdicao(produtoId, linhaProduto) {
+function carregarProdutoParaEdicao(botaoEditar) {
+    const linhaProduto = botaoEditar.closest('tr');
+    const produtoId = botaoEditar.dataset.id;
+    const preco = botaoEditar.dataset.preco;
+
     const nome = linhaProduto.children[0].textContent;
     const sku = linhaProduto.children[1].textContent;
-    const quantidade = linhaProduto.children[2].textContent; 
-    const localizacao = linhaProduto.children[4].textContent;
+    const quantidade = linhaProduto.children[2].textContent;
+    const localizacao = linhaProduto.children[5].textContent; // Índice corrigido para 5 após adicionar a coluna de preço
 
     document.getElementById('nome').value = nome;
     document.getElementById('sku').value = sku;
-    document.getElementById('quantidade').value = quantidade; 
+    document.getElementById('quantidade').value = quantidade;
+    document.getElementById('preco').value = preco;
     document.getElementById('localizacao').value = localizacao;
 
     let idInput = document.getElementById('produto-id');
     const form = document.querySelector('.modal');
-    
+
     if (!idInput) {
         idInput = document.createElement('input');
         idInput.type = 'hidden';
@@ -86,7 +91,7 @@ function carregarProdutoParaEdicao(produtoId, linhaProduto) {
 
     document.querySelector('.modal h2').textContent = 'Editar Produto';
     document.querySelector('.buttonSubmit').textContent = 'Salvar Alterações';
-    
+
     openModal();
 }
 
@@ -95,19 +100,14 @@ document.addEventListener('click', (e) => {
     const subtracaoButton = e.target.closest(".btnremove");
 
     if (adicaoButton) {
-        alterarQuantidade(adicaoButton, 1); 
+        alterarQuantidade(adicaoButton, 1);
     } else if (subtracaoButton) {
-        alterarQuantidade(subtracaoButton, -1); 
+        alterarQuantidade(subtracaoButton, -1);
     }
 
     const editarButton = e.target.closest(".btnedit");
 
     if (editarButton) {
-        const idProduto = editarButton.dataset.id;
-        const linhaProduto = editarButton.closest('tr');
-        
-        if (idProduto && linhaProduto) {
-            carregarProdutoParaEdicao(idProduto, linhaProduto);
-        }
+        carregarProdutoParaEdicao(editarButton);
     }
 });
