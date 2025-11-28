@@ -70,7 +70,7 @@ function carregarProdutoParaEdicao(botaoEditar) {
     const linhaProduto = botaoEditar.closest('tr');
     const produtoId = botaoEditar.dataset.id;
     const preco = botaoEditar.dataset.preco;
-    const estoqueMinimo = botaoEditar.dataset.estoqueminimo;
+    const estoqueMinimo = botaoEditar.dataset.estoqueMinimo;
 
     const nome = linhaProduto.children[0].textContent;
     const sku = linhaProduto.children[1].textContent;
