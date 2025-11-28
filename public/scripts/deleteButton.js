@@ -11,7 +11,7 @@ document.addEventListener('click', async (e) => {
 
         if (idParaDeletar) {
             try {
-                const response = await fetch(`http://localhost:3000/produtos/${idParaDeletar}`, {
+                const response = await fetch(`/api/produtos/${idParaDeletar}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'

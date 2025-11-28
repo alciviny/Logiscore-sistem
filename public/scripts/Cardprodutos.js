@@ -43,7 +43,7 @@ function cardProdutos(produto){
 async function carregarProdutos() {
     
     try {
-        const response = await fetch('http://localhost:3000/produtos');
+        const response = await fetch('/api/produtos');
         const produtos = await response.json();
         const tbody = document.querySelector('.table-container tbody');
 

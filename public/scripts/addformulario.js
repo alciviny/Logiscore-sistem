@@ -28,11 +28,11 @@ if (!formulario) {
 
         if (produtoId) {
             method = 'PATCH'; 
-            url = `http://localhost:3000/produtos/${produtoId}`;
+            url = `/api/produtos/${produtoId}`;
             delete data['produto-id'];
         } else {
             method = 'POST';
-            url = 'http://localhost:3000/produtos';
+            url = '/api/produtos';
         }
 
         try {

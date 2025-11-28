@@ -1,5 +1,5 @@
 async function enviarAtualizacaoAPI(id, novaQuantidade) {
-    const response = await fetch(`http://localhost:3000/produtos/${id}`, {
+    const response = await fetch(`/api/produtos/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ quantidade: novaQuantidade })
