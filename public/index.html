@@ -44,18 +44,50 @@
         </div>
 
         <div id="relatorios-container" style="display: none;">
+            <!-- Seção de KPIs -->
             <div class="cards-container">
                 <div class="card kpi-card">
                     <h3 class="card-title">Total de Produtos</h3>
                     <p id="total-produtos-valor" class="card-value">0</p>
                 </div>
                 <div class="card kpi-card">
-                    <h3 class="card-title">Estoque Baixo</h3>
+                    <h3 class="card-title">Itens com Estoque Baixo</h3>
                     <p id="baixo-estoque-valor" class="card-value">0</p>
                 </div>
+                <div class="card kpi-card">
+                    <h3 class="card-title">Valor Total do Estoque</h3>
+                    <p id="valor-total-estoque" class="card-value">R$ 0,00</p>
+                </div>
             </div>
-            <div class="chart-container">
-                <canvas id="graficoLocalizacao"></canvas>
+
+            <!-- Seção de Gráficos -->
+            <div class="charts-grid">
+                <div class="chart-wrapper">
+                    <canvas id="graficoLocalizacao"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="graficoStatus"></canvas>
+                </div>
+                <div class="chart-wrapper chart-wrapper-full-width">
+                    <canvas id="graficoTop5"></canvas>
+                </div>
+            </div>
+
+            <!-- Seção de Alertas -->
+            <div class="alertas-ruptura">
+                <h3 class="titulo-secao">Alertas de Ruptura (Produtos Esgotados)</h3>
+                <table class="table-container-alertas">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>SKU</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-produtos-esgotados">
+                        <!-- Linhas serão inseridas dinamicamente -->
+                    </tbody>
+                </table>
+                <p id="nenhum-esgotado-msg" style="display: none; text-align: center; margin-top: 10px;">Nenhum produto esgotado no momento.</p>
             </div>
         </div>
         
