@@ -11,7 +11,7 @@
     <aside class="sidebar">
         <div class="Info">
             <div class="logo">
-                <img src="images/Group 1.png" alt="">
+                <img src="images/image 1.png" alt="">
                 <div class="logo-nomes">
                     <h2 id="Nome-logo">LogisCore</h2>
                     <p id="Subnome">Inventory System</p>
@@ -27,8 +27,20 @@
     </aside>
     <main class="main">
         <div class="principal">
-            <h2 id="Titulo-Princ">Painel de Inventário</h2>
-            <button class="btn-add" onclick="openModal()">+ Novo Produto</button>
+            <div class="tudo-princ">
+                <div class="text-princ">
+                    <h2 id="Titulo-Princ">Painel de Inventário</h2>
+                    <span>Gerencie produtos, estoque e movimentações</span>
+                </div>
+                <div class="principal-baixo">
+                    <button class="btn-add" onclick="openModal()">+ Novo Produto</button>
+                        <input type="text" id="search-input" placeholder="Pesquisar..." class="search-input" autofocus>
+                </div>
+            </div>
+
+            <div id="erro-busca" class="erro-busca">
+                Nenhum produto encontrado com o nome ou SKU fornecido
+            </div>
         </div>
         
         <table class="table-container">
@@ -52,13 +64,13 @@
         <form action="" class="modal">
             <h2>Novo Produto</h2>
             <div class="inpt-grupo">
-                <input type="text" id="nome" name="nome" placeholder="Nome" />
+                <input type="text" id="nome" name="nome" placeholder="Nome" autofocus/>
             </div>
             <div class="inpt-grupo">
                 <input type="text" id="sku" name="SKU" placeholder="SKU" />
             </div>
             <div class="inpt-grupo">
-                <input type="number" id="quantidade" name="quantidade" placeholder="Quantidade" />
+                <input type="number" id="quantidade" name="quantidade" placeholder="Quantidade"/>
             </div>
             <div class="inpt-grupo">
                 <input type="text" id="localizacao" name="localizacao" placeholder="Local" />
@@ -69,6 +81,7 @@
     </div>
 <script src="scripts/modal.js" defer></script>
 <script src="scripts/addformulario.js" defer></script>
+<script src="scripts/pesquisar.js" defer></script>
 <script src="scripts/Cardprodutos.js" defer></script>
 <script src="scripts/deleteButton.js" defer></script>
 <script src="scripts/editProdutos.js" defer></script>

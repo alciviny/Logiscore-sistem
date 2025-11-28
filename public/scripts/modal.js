@@ -1,43 +1,34 @@
 const modalBackground = document.getElementById('modal-form');
-const openModalButton = document.querySelector('.buttonSubmit');
-
 function openModal() {
-    modalBackground.classList.add('active'); 
+    if (modalBackground) {
+        modalBackground.classList.add('active');
+    }
+    
+    const inputNome = document.getElementById('nome'); 
+    
+    if (inputNome) {
+        inputNome.focus();
+    }
 }
 
 function closeModal() {
-    modalBackground.classList.remove('active');
-    document.getElementById('name').value = '';
-    document.getElementById('sku').value = '';
-    document.getElementById('qty').value = '';
-    document.getElementById('loc').value = '';
-}
-
-function addProduct() {
-    const name = document.getElementById('name').value;
-    const sku = document.getElementById('sku').value;
-    const qty = document.getElementById('qty').value;
-    const loc = document.getElementById('loc').value;
-
-    if (!name || !sku || !qty || !loc) {
-        alert("Por favor, preencha todos os campos!");
-        return;
+    const form = document.querySelector('.modal');
+    
+    if (modalBackground) {
+        modalBackground.classList.remove('active');
     }
+    
+    if (form) {
+        form.reset(); 
 
-    console.log("Novo Produto a ser adicionado:", {
-        nome: name,
-        sku: sku,
-        quantidade: qty,
-        localizacao: loc
-    });
+        document.querySelector('.modal h2').textContent = 'Novo Produto';
+        document.querySelector('.buttonSubmit').textContent = 'Adicionar Produto';
 
-    alert(`Produto '${name}' com SKU '${sku}' adicionado com sucesso (SIMULADO)!`);
-
-    closeModal();
-}
-
-if (openModalButton) {
-    openModalButton.addEventListener('click', openModal);
+        const idInput = document.getElementById('produto-id');
+        if (idInput) {
+            idInput.remove();
+        }
+    }
 }
 
 if (modalBackground) {

@@ -36,7 +36,7 @@ document.addEventListener('click', async (e) => {
             } catch (error) {
                 console.error('Não foi possível remover o item:', error);
                 alert('Erro ao deletar o item. Tente novamente.');
-                elementoClicado.disabled = false; // 
+                elementoClicado.disabled = false;
             }
         }
     }
