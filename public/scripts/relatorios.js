@@ -31,11 +31,84 @@ async function carregarRelatorios() {
         // 3. Preenche a tabela de produtos esgotados
         popularTabelaEsgotados(data.produtosEsgotados);
 
+        // 4. Carrega os alertas para atualizar o contador
+        carregarAlertas();
+
+
     } catch (error) {
         console.error('Erro ao carregar relatórios:', error);
         // Adicionar feedback visual para o usuário, se necessário
     }
 }
+/**
+ * @description Busca os produtos em estado crítico e os exibe na tabela de alertas.
+ */
+async function carregarAlertas() {
+    try {
+        const response = await fetch('/relatorios/produtos-criticos');
+        if (!response.ok) {
+            throw new Error(`Erro ao buscar produtos críticos: ${response.statusText}`);
+        }
+        const produtosCriticos = await response.json();
+
+        const tabelaBody = document.getElementById('tabela-produtos-criticos');
+        const mensagemNenhum = document.getElementById('nenhum-critico-msg');
+        tabelaBody.innerHTML = ''; // Limpa a tabela antes de popular
+
+        if (produtosCriticos.length === 0) {
+            mensagemNenhum.style.display = 'block';
+            tabelaBody.style.display = 'none';
+        } else {
+            mensagemNenhum.style.display = 'none';
+            tabelaBody.style.display = '';
+            produtosCriticos.forEach(produto => {
+                const row = `<tr>
+                               <td>${produto.nome}</td>
+                               <td>${produto.SKU}</td>
+                               <td>${produto.quantidade}</td>
+                               <td>${produto.estoqueMinimo}</td>
+                               <td>${produto.localizacao}</td>
+                             </tr>`;
+                tabelaBody.innerHTML += row;
+            });
+        }
+        
+        // Atualiza o contador de alertas na barra de navegação
+        atualizarContadorAlertas(produtosCriticos.length);
+
+    } catch (error) {
+        console.error('Erro ao carregar alertas de produtos críticos:', error);
+        // Opcional: Adicionar um feedback de erro na UI de alertas
+    }
+}
+
+/**
+ * @description Atualiza o contador (badge) de alertas no menu de navegação.
+ * @param {number} count - O número de produtos em estado crítico.
+ */
+function atualizarContadorAlertas(count) {
+    // Encontra o item de menu "Alertas" de forma mais robusta
+    const navItems = document.querySelectorAll('.nav-item');
+    const alertsButton = Array.from(navItems).find(item => item.textContent.trim().startsWith('Alertas'));
+
+    if (alertsButton) {
+        // Remove o badge existente, se houver, para evitar duplicação
+        const existingBadge = alertsButton.querySelector('.badge');
+        if (existingBadge) {
+            existingBadge.remove();
+        }
+
+        // Adiciona o novo badge apenas se a contagem for maior que zero
+        if (count > 0) {
+            const badge = document.createElement('span');
+            badge.className = 'badge';
+            badge.textContent = count;
+            alertsButton.appendChild(badge);
+        }
+    }
+}
+
+
 
 /**
  * @description Renderiza ou atualiza o gráfico de barras de produtos por localização.

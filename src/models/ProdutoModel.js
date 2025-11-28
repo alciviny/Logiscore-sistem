@@ -24,6 +24,12 @@ const produtoSchema = new mongoose.Schema(
             min: [0, "A quantidade não pode ser negativa"],
             default: 0
         },
+        estoqueMinimo: {
+            type: Number,
+            required: [true, "O campo 'estoqueMinimo' é obrigatório"],
+            default: 5,
+            min: [0, "O estoque mínimo não pode ser negativo"]
+        },
         localizacao: {
             type: String,
             required: [true, "O campo 'localizacao' é obrigatório"]

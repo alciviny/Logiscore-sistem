@@ -11,4 +11,7 @@ router.get('/test', (req, res) => {
 // Rota para obter os dados do dashboard
 router.get('/dashboard', RelatoriosController.getDashboardData);
 
+// Rota para obter a lista de produtos em estado crítico
+router.get('/produtos-criticos', RelatoriosController.getProdutosCriticos);
+
 export default router;

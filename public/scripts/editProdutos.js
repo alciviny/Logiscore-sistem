@@ -10,20 +10,23 @@ async function enviarAtualizacaoAPI(id, novaQuantidade) {
     return response.json();
 }
 
-function atualizarStatusVisual(linha, novaQuantidade) {
+function atualizarStatusVisual(linha, novaQuantidade, estoqueMinimo) {
     const spanStatus = linha.children[4].querySelector('.status');
     let statusTexto;
     let statusClasse;
     
-    if (novaQuantidade > 5) {
+    if (novaQuantidade > estoqueMinimo) {
         statusTexto = 'Normal';
         statusClasse = 'normal';
-    } else if (novaQuantidade >= 1 && novaQuantidade <= 5) {
+    } else if (novaQuantidade === 0) {
+        statusTexto = 'Esgotado';
+        statusClasse = 'esgotado';
+    } else if (novaQuantidade > 0 && novaQuantidade <= estoqueMinimo) {
         statusTexto = 'Baixo Estoque';
         statusClasse = 'baixo';
     } else { 
-        statusTexto = 'Esgotado';
-        statusClasse = 'esgotado';
+        statusTexto = 'Indefinido';
+        statusClasse = 'indefinido';
     }
 
     spanStatus.textContent = statusTexto;
@@ -35,6 +38,8 @@ function atualizarStatusVisual(linha, novaQuantidade) {
 async function alterarQuantidade(botao, mudanca) {
     try {
         const linhaProduto = botao.closest('tr');
+        const btnEditar = linhaProduto.querySelector('.btnedit');
+        const estoqueMinimo = parseInt(btnEditar.dataset.estoqueminimo, 10) || 0;
         
         const idProduto = linhaProduto.querySelector('.btndelete').dataset.id;
         
@@ -45,14 +50,14 @@ async function alterarQuantidade(botao, mudanca) {
         if (novaQuantidade < 0) return;
 
         elementoQuantidade.textContent = novaQuantidade;
-        atualizarStatusVisual(linhaProduto, novaQuantidade);
+        atualizarStatusVisual(linhaProduto, novaQuantidade, estoqueMinimo);
 
         try {
             await enviarAtualizacaoAPI(idProduto, novaQuantidade);
         } catch (erroApi) {
             console.error('Erro na API, revertendo...', erroApi);
             elementoQuantidade.textContent = quantidadeAtual; 
-            atualizarStatusVisual(linhaProduto, quantidadeAtual); 
+            atualizarStatusVisual(linhaProduto, quantidadeAtual, estoqueMinimo); 
             alert("Não foi possível salvar a alteração na API.");
         }
 
@@ -65,6 +70,7 @@ function carregarProdutoParaEdicao(botaoEditar) {
     const linhaProduto = botaoEditar.closest('tr');
     const produtoId = botaoEditar.dataset.id;
     const preco = botaoEditar.dataset.preco;
+    const estoqueMinimo = botaoEditar.dataset.estoqueminimo;
 
     const nome = linhaProduto.children[0].textContent;
     const sku = linhaProduto.children[1].textContent;
@@ -75,6 +81,7 @@ function carregarProdutoParaEdicao(botaoEditar) {
     document.getElementById('sku').value = sku;
     document.getElementById('quantidade').value = quantidade;
     document.getElementById('preco').value = preco;
+    document.getElementById('estoqueMinimo').value = estoqueMinimo;
     document.getElementById('localizacao').value = localizacao;
 
     let idInput = document.getElementById('produto-id');

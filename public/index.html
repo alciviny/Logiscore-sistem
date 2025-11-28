@@ -107,6 +107,27 @@
                 
             </tbody>
         </table>
+
+        <!-- Container de Alertas (inicialmente oculto) -->
+        <div id="alertas-container" style="display: none;">
+             <h2 class="titulo-secao">Produtos em Nível de Alerta</h2>
+             <p class="subtitulo-secao">Estes produtos atingiram ou estão abaixo do estoque mínimo definido.</p>
+             <table class="table-container-alertas">
+                 <thead>
+                     <tr>
+                         <th>Produto</th>
+                         <th>SKU</th>
+                         <th>Qtd. Atual</th>
+                         <th>Estoque Mín.</th>
+                         <th>Localização</th>
+                     </tr>
+                 </thead>
+                 <tbody id="tabela-produtos-criticos">
+                     <!-- Linhas serão inseridas dinamicamente via JS -->
+                 </tbody>
+             </table>
+             <p id="nenhum-critico-msg" style="display: none; text-align: center; margin-top: 10px;">Nenhum produto em nível de alerta no momento.</p>
+        </div>
     </main>    
         <!-- MODAL -->
     <div class="modal-form" id="modal-form">
@@ -126,6 +147,9 @@
             </div>
             <div class="inpt-grupo">
                 <input type="text" id="localizacao" name="localizacao" placeholder="Local" />
+            </div>
+            <div class="inpt-grupo">
+                <input type="number" id="estoqueMinimo" name="estoqueMinimo" placeholder="Estoque Mínimo" min="0"/>
             </div>
            
             <button type="submit" class="buttonSubmit">Adicionar Produto</button>
