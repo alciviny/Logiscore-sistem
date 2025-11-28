@@ -6,7 +6,12 @@ function cardProdutos(produto){
     if (produto.quantidade > 5) {
         status = 'Normal';
         statusClass = 'normal';
-    } else if (produto.quantidade >= 0 && produto.quantidade <= 5) {
+    }
+    else if (produto.quantidade === 0) {
+        status = 'Esgotado';
+        statusClass = 'esgotado';
+    }
+    else if (produto.quantidade >= 0 && produto.quantidade <= 5) {
         status = 'Baixo Estoque';
         statusClass = 'baixo';
     } else {

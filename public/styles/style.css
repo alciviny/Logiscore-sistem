@@ -377,3 +377,86 @@ thead {
     transition: 0.2s ease-in-out;
 }
 
+/* RELATORIOS CSS */
+#relatorios-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.kpi-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.card-value {
+    font-size: 2em;
+    font-weight: 700;
+    color: #333;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.chart-wrapper {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    position: relative;
+    min-height: 350px;
+}
+
+.chart-wrapper-full-width {
+    grid-column: 1 / -1; /* Ocupa toda a largura */
+}
+
+.alertas-ruptura {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.titulo-secao {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.table-container-alertas {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container-alertas thead {
+    background-color: #fff0f1;
+}
+
+.table-container-alertas th, .table-container-alertas td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}

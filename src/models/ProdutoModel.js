@@ -12,6 +12,12 @@ const produtoSchema = new mongoose.Schema(
             required: [true, "O campo 'SKU' é obrigatório"],
             unique: true
         },
+        preco: {
+            type: Number,
+            required: [true, "O campo 'preco' é obrigatório"],
+            default: 0,
+            min: [0, "O preço não pode ser negativo"]
+        },
         quantidade: {
             type: Number,
             required: [true, "O campo 'quantidade' é obrigatório"],
