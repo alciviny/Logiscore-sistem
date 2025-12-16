@@ -1,7 +1,20 @@
-import mongoose from "mongoose";
+import mongoose, { Document, Schema, model } from "mongoose";
 
-const produtoSchema = new mongoose.Schema(
-  
+
+export interface IProduto extends Document {
+    nome: string;
+    SKU: string;
+    preco: number;
+    quantidade: number;
+    estoqueMinimo: number;
+    localizacao: string;
+    categoria: string; 
+    status: "Em estoque" | "Baixo estoque" | "Fora de estoque";
+    createdAt?: Date;
+    updatedAt?: Date;
+}
+
+const produtoSchema = new Schema<IProduto>(
     {
         nome: {
             type: String,
@@ -34,25 +47,21 @@ const produtoSchema = new mongoose.Schema(
             type: String,
             required: [true, "O campo 'localizacao' é obrigatório"]
         },
-        categoria:{
-            // type:mongoose.Schema.Types.ObjectId,
-            // ref:'categoria',
-            // required:true
+        categoria: {
+            type: String // Temporário
         },
         status: {
             type: String,
-            required: [true,"campo obrigatorio"],
+            required: [true, "Campo 'status' é obrigatório"],
             default: "Em estoque",
             enum: ["Em estoque", "Baixo estoque", "Fora de estoque"]
         }
     },
-  
     {
-        timestamps: true
+        timestamps: true // Adiciona createdAt e updatedAt automaticamente
     }
 );
 
-
-const ProdutoModel = mongoose.model('Produto', produtoSchema);
+const ProdutoModel = model<IProduto>('Produto', produtoSchema);
 
 export default ProdutoModel;
