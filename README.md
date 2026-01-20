@@ -1,42 +1,9 @@
-# Sistema de Inventário Inteligente (SII) - LogisCore
-
-Este projeto é a construção do back-end para o novo Sistema de Inventário Inteligente da LogisCore Armazéns. Nosso objetivo é substituir o controle de estoque manual em planilhas por uma API RESTful robusta que servirá de "coração" para a nova aplicação web.
-
-## O Problema a Resolver
-
-A LogisCore perde dinheiro e eficiência devido a um controle de inventário impreciso, resultando em "furos de estoque" (falta de peças que deveriam existir) e "excesso de estoque" (compra de peças desnecessárias).
-
-## Nosso Objetivo
-
-Desenvolver a API RESTful para o CRUD (Create, Read, Update, Delete) completo dos itens do catálogo de produtos.
-
----
-
-## Tarefas e Requisitos
-
-### Back-end: API RESTful
-
-- [ ] **`POST /produtos`**: Rota para criar um novo item no inventário.
-  - **Campos:** `nome`, `SKU`, `quantidade`, `localizacao`.
-
-- [ ] **`GET /produtos`**: Rota para ler/listar todos os produtos.
-  - **Filtros:** Deve ser possível filtrar por `nome` e `SKU` via query params (ex: `/produtos?sku=XYZ-123`).
-
-- [ ] **`GET /produtos/:id`**: Rota para obter os dados de um único produto pelo seu ID.
-
-- [ ] **`PATCH /produtos/:id`**: Rota para atualizar a quantidade de um item.
-  - **Foco:** A atualização deve ser focada em alterar a quantidade para registrar entradas e saídas.
-  - **Regra de Negócio:** A API **deve** impedir que a quantidade de um item se torne negativa.
-
-- [ ] **`DELETE /produtos/:id`**: Rota para remover um item obsoleto do catálogo.
-
-### Front-end (Requisitos para a API suportar)
-
-- O front-end precisará de uma tela de dashboard para exibir todos os produtos.
-- O front-end implementará uma busca que consumirá os filtros da rota `GET /produtos`.
-- O front-end terá um formulário para criar produtos (`POST /produtos`).
-- O front-end terá botões de `+` e `-` para ajustar o estoque (`PATCH /produtos/:id`).
-- O front-end irá destacar visualmente itens com estoque baixo (ex: < 10 unidades). A API deve fornecer a quantidade de forma clara.
-
-
- Consulte o arquivo `docs/README.md` para as convenções de commit e branch.
+📦 Logiscore System | Inventory & Logistics IntelligenceO Logiscore é uma solução de alta performance para gestão de inventário e fluxo logístico. Projetado com foco em Type Safety e Escalabilidade, o sistema automatiza o ciclo de vida de produtos, desde a entrada até a geração de relatórios estratégicos para tomada de decisão.🏗️ Engenharia de Software & ArquiteturaO projeto foi construído utilizando o padrão Controller-Service-Model, garantindo uma separação clara de responsabilidades e facilitando a manutenção e testabilidade.Diferenciais Técnicos:Type-Safe Flow: Uso extensivo de interfaces e tipos customizados do TypeScript tanto no backend quanto no frontend, mitigando erros em tempo de execução.Persistent Data Layer: Implementação robusta de schemas via Mongoose, garantindo integridade referencial e validações complexas a nível de banco de dados.RESTful API Design: Endpoints organizados por domínios (/produtos, /relatorios), seguindo as melhores práticas de verbos HTTP e status codes.Edge Deployment Ready: Configuração otimizada para o runtime da Vercel, garantindo latência mínima e escalabilidade global.🛠️ Stack TecnológicaCamadaTecnologiaMotivaçãoRuntimeNode.jsI/O não-bloqueante para processamento de alto volume.LinguagemTypeScriptRobustez, produtividade e redução de débitos técnicos.FrameworkExpress.jsMinimalismo e flexibilidade para construção de APIs.DatabaseMongoDBFlexibilidade de schema para evolução rápida de produtos.ORMMongooseCamada de modelagem e validação de dados de alto nível.FrontendTS + TailwindCSSInterface responsiva e lógica de cliente tipada.🚀 Funcionalidades HardcoreLifecycle Management: CRUD completo de produtos com validação de estoque crítico.Intelligence Reports: Motor de agregação de dados para geração de relatórios dinâmicos.Search Engine: Implementação de busca eficiente para filtragem de grandes volumes de itens.Mobile-First UI: Interface 100% responsiva projetada para ambientes de armazém e logística.⚙️ Setup & Instalação (Fast Track)Pré-requisitosNode.js v18+Instância MongoDB (Local ou Atlas)Passo a passoClone o repositórioBashgit clone https://github.com/alciviny/logiscore-sistem.git
+cd logiscore-sistem
+Instale as dependênciasBashnpm install
+Configuração de AmbienteCrie um arquivo .env na raiz seguindo o modelo:Snippet de códigoMONGODB_URI=sua_string_de_conexao
+PORT=3000
+Execução em DesenvolvimentoBashnpm run dev
+Build para ProduçãoBashnpm run build
+npm start
+🔬 Decisões Arquiteturais (O que o recrutador quer ver)Separação de Rotas: Cada domínio de negócio possui seu próprio arquivo de rotas, evitando o "God File" de configuração.Middleware de Erros: Centralização do tratamento de exceções para respostas consistentes da API.Configuração de Build: Uso de tsconfig.json rigoroso para garantir a melhor qualidade de código possível.👨‍💻 Autor: ViníciusSoftware Engineer | Especialista em Soluções Full-StackEste projeto é um exemplo da minha capacidade de entregar sistemas funcionais com rigor técnico e foco em performance.LinkedInPortfolio GitHub
